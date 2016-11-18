@@ -81,7 +81,17 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(GLEW_HOME)\include;$(GLFW_HOME)\include;$(GLM_HOME);$(SOIL_HOME)\src;$(ASSIMP_HOME)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(GLEW_HOME)\lib\Release\x64;$(GLFW_HOME)\lib-vc2015;$(SOIL_HOME)\projects\VC9\x64\Debug;$(ASSIMP_HOME)\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;SOIL.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(GLEW_HOME)\bin\Release\x64\glew32.dll" "$(OutDir)"
+copy "$(GLFW_HOME)\lib-vc2015\glfw3.dll" "$(OutDir)"
+copy "$(ASSIMP_HOME)\bin64\assimp.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
