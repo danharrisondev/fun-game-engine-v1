@@ -1,6 +1,14 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "Shader.h"
+#include "Model.h"
+
+GLfloat triangleVerts[] = {
+	-0.5f, 0.0f, 0.0f,
+	0.5f, 0.5f, 0.0f,
+	0.5f, -0.5f, 0.0f
+};
 
 int main(int argc, char** argv)
 {
@@ -16,9 +24,17 @@ int main(int argc, char** argv)
 	glewExperimental = GL_TRUE;
 	glewInit();
 
+	Shader simplerShader("D:\\Code\\cpp\\Shaders\\Simple.vs", "D:\\Code\\cpp\\Shaders\\Simple.frag");
+
+	Model triangle(triangleVerts, sizeof(triangleVerts));
+	triangle.Setup();
+
 	while(!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
+
+		triangle.Draw(&simplerShader);
+
 		glfwSwapBuffers(window);
 	}
 
