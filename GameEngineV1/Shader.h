@@ -12,6 +12,7 @@ public:
 	Shader();
 	~Shader();
 	void Use();
+	GLuint GetUniformLocation(const GLchar* name);
 private:
 	GLuint mProgramId;
 };

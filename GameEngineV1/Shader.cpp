@@ -1,6 +1,4 @@
 #include "Shader.h"
-#include <GL/glew.h>
-
 
 Shader::Shader(std::string vertexFilePath, std::string fragmentFilePath)
 {
@@ -26,7 +24,7 @@ Shader::Shader(std::string vertexFilePath, std::string fragmentFilePath)
 	glLinkProgram(program);
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
-	this->mProgramId = program;
+	mProgramId = program;
 }
 
 Shader::Shader()
@@ -40,5 +38,10 @@ Shader::~Shader()
 
 void Shader::Use()
 {
-	glUseProgram(this->mProgramId);
+	glUseProgram(mProgramId);
+}
+
+GLuint Shader::GetUniformLocation(const GLchar* name)
+{
+	return glGetUniformLocation(mProgramId, name);
 }
