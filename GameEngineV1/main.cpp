@@ -5,9 +5,9 @@
 #include "Model.h"
 
 GLfloat triangleVerts[] = {
-	-0.5f, 0.0f, 0.0f,
-	0.5f, 0.5f, 0.0f,
-	0.5f, -0.5f, 0.0f
+	0.0f, 0.5f, 0.0f,
+	0.5f, -0.5f, 0.0f,
+	-0.5f, -0.5f, 0.0f
 };
 
 int main(int argc, char** argv)
@@ -24,7 +24,11 @@ int main(int argc, char** argv)
 	glewExperimental = GL_TRUE;
 	glewInit();
 
-	Shader simplerShader("D:\\Code\\cpp\\Shaders\\Simple.vs", "D:\\Code\\cpp\\Shaders\\Simple.frag");
+	glEnable(GL_DEPTH_TEST);
+	glViewport(0, 0, 1024, 768);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+	Shader simplerShader("D:\\Code\\cpp\\Shaders\\simple-movable.vs", "D:\\Code\\cpp\\Shaders\\simple-movable.frag");
 
 	Model triangle(triangleVerts, sizeof(triangleVerts));
 	triangle.Setup();
@@ -32,6 +36,8 @@ int main(int argc, char** argv)
 	while(!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
+
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		triangle.Draw(&simplerShader);
 
