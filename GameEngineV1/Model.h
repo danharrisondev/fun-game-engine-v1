@@ -13,7 +13,7 @@ public:
 	Model(Vertex* vertices, GLsizei size);
 	~Model();
 	void Setup();
-	void Draw(Shader* shader);
+	void Draw(Shader& shader);
 	glm::vec3 Position;
 private:
 	GLuint mVertexArray;

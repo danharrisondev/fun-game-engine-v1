@@ -27,7 +27,7 @@ void Model::Setup()
 	glBindVertexArray(0);
 }
 
-void Model::Draw(Shader* shader)
+void Model::Draw(Shader& shader)
 {
 	glm::mat4 model;
 	model = glm::translate(model, Position);
@@ -38,10 +38,10 @@ void Model::Draw(Shader* shader)
 	glm::mat4 projection;
 	projection = glm::perspective(45.0f, 1024.0f/768.0f, 0.1f, 100.0f);
 
-	shader->Use();
-	glUniformMatrix4fv(shader->GetUniformLocation("model"), 1, GL_FALSE, glm::value_ptr(model));
-	glUniformMatrix4fv(shader->GetUniformLocation("view"), 1, GL_FALSE, glm::value_ptr(view));
-	glUniformMatrix4fv(shader->GetUniformLocation("projection"), 1, GL_FALSE, glm::value_ptr(projection));
+	shader.Use();
+	glUniformMatrix4fv(shader.GetUniformLocation("model"), 1, GL_FALSE, glm::value_ptr(model));
+	glUniformMatrix4fv(shader.GetUniformLocation("view"), 1, GL_FALSE, glm::value_ptr(view));
+	glUniformMatrix4fv(shader.GetUniformLocation("projection"), 1, GL_FALSE, glm::value_ptr(projection));
 	glBindVertexArray(mVertexArray);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glBindVertexArray(0);
