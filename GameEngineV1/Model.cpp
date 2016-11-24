@@ -1,8 +1,9 @@
 #include "Model.h"
 #include "Shader.h"
+#include "Vertex.h"
 
 
-Model::Model(GLfloat* vertices, GLsizei size)
+Model::Model(Vertex* vertices, GLsizei size)
 {
 	mVertices = vertices;
 	mSize = size;

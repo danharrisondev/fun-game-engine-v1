@@ -4,10 +4,10 @@
 #include "Shader.h"
 #include "Model.h"
 
-GLfloat triangleVerts[] = {
-	0.0f, 0.5f, 0.0f,
-	0.5f, -0.5f, 0.0f,
-	-0.5f, -0.5f, 0.0f
+Vertex triangleVerts[3] = {
+	Vertex(0.0f, 0.5f, 0.0f),
+	Vertex(0.5f, -0.5f, 0.0f),
+	Vertex(-0.5f, -0.5f, 0.0f)
 };
 
 int main(int argc, char** argv)
