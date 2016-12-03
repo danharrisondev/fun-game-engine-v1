@@ -6,11 +6,12 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <GLFW/glfw3.h>
 #include "Vertex.h"
+#include "Mesh.h"
 
 class Model
 {
 public:
-	Model(Vertex* vertices, GLsizei size);
+	Model(Mesh& mesh);
 	~Model();
 	void Setup();
 	void Draw(Shader& shader);
@@ -20,5 +21,6 @@ private:
 	Vertex* mVertices;
 	GLuint mVertexCount;
 	GLsizei mSize;
+	Mesh& mMesh;
 };
 

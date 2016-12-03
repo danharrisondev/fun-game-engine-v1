@@ -2,11 +2,8 @@
 #include "Shader.h"
 #include "Vertex.h"
 
-
-Model::Model(Vertex* vertices, GLsizei size)
+Model::Model(Mesh& mesh) : mMesh(mesh)
 {
-	mVertices = vertices;
-	mSize = size;
 }
 
 Model::~Model()
@@ -21,7 +18,7 @@ void Model::Setup()
 	GLuint vbo;
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, mSize, mVertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, mMesh.size, mMesh.data, GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 	glBindVertexArray(0);

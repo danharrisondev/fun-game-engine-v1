@@ -12,6 +12,8 @@ Vertex triangleVerts[3] = {
 
 int main(int argc, char** argv)
 {
+	Mesh triangleMesh(triangleVerts, sizeof(triangleVerts));
+
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -30,7 +32,7 @@ int main(int argc, char** argv)
 
 	Shader simplerShader("Shaders\\simple-movable.vs", "Shaders\\simple-movable.frag");
 
-	Model triangle(triangleVerts, sizeof(triangleVerts));
+	Model triangle(triangleMesh);
 	triangle.Setup();
 
 	while(!glfwWindowShouldClose(window))
