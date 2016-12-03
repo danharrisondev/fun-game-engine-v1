@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 	glViewport(0, 0, 1024, 768);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-	Shader simplerShader("D:\\Code\\cpp\\Shaders\\simple-movable.vs", "D:\\Code\\cpp\\Shaders\\simple-movable.frag");
+	Shader simplerShader("Shaders\\simple-movable.vs", "Shaders\\simple-movable.frag");
 
 	Model triangle(triangleVerts, sizeof(triangleVerts));
 	triangle.Setup();
