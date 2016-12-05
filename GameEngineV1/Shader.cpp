@@ -27,11 +27,6 @@ Shader::Shader(std::string vertexFilePath, std::string fragmentFilePath)
 	mProgramId = program;
 }
 
-Shader::Shader()
-{
-}
-
-
 Shader::~Shader()
 {
 }

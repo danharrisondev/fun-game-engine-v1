@@ -9,7 +9,6 @@ class Shader
 {
 public:
 	Shader(std::string vertexFilePath, std::string fragmentFilePath);
-	Shader();
 	~Shader();
 	void Use();
 	GLuint GetUniformLocation(const GLchar* name);
