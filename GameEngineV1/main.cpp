@@ -2,7 +2,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "Shader.h"
-#include "Model.h"
+#include "Vertex.h"
+#include "Mesh.h"
 
 Vertex triangleVerts[3] = {
 	Vertex(0.0f, 0.5f, 0.0f),
@@ -12,8 +13,6 @@ Vertex triangleVerts[3] = {
 
 int main(int argc, char** argv)
 {
-	Mesh triangleMesh(triangleVerts, sizeof(triangleVerts));
-
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -30,10 +29,8 @@ int main(int argc, char** argv)
 	glViewport(0, 0, 1024, 768);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
+	Mesh triangleMesh(triangleVerts, sizeof(triangleVerts));
 	Shader simplerShader("Shaders\\simple-movable.vs", "Shaders\\simple-movable.frag");
-
-	Model triangle(triangleMesh);
-	triangle.Setup();
 
 	while(!glfwWindowShouldClose(window))
 	{
@@ -41,7 +38,7 @@ int main(int argc, char** argv)
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		triangle.Draw(simplerShader);
+		triangleMesh.Draw(simplerShader);
 
 		glfwSwapBuffers(window);
 	}
