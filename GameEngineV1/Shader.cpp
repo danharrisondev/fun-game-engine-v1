@@ -1,4 +1,5 @@
 #include "Shader.h"
+#include <sstream>
 
 Shader::Shader(std::string vertexFilePath, std::string fragmentFilePath)
 {

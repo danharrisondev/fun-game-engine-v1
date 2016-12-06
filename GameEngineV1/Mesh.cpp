@@ -1,11 +1,18 @@
 #include "Mesh.h"
+#include <GLFW/glfw3.h>
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 Mesh::Mesh(std::string modelPath)
 {
 	Assimp::Importer importer;
-	const aiScene* scene = importer.ReadFile(modelPath, aiProcess_Triangulate);	
+	const aiScene* scene = importer.ReadFile(modelPath, aiProcess_Triangulate);
 	const aiMesh* mesh = scene->mMeshes[0];
-	
+
 	for (int i = 0; i < mesh->mNumVertices; i++)
 	{
 		vertices.push_back(Vertex(
@@ -28,11 +35,11 @@ Mesh::Mesh(std::string modelPath)
 	glBindVertexArray(mVertexArray);
 	glBindBuffer(GL_ARRAY_BUFFER, mVertexArray);
 	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex),
-		&vertices[0], GL_STATIC_DRAW);
+	                            &vertices[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementBuffer);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLfloat),
-		&indices[0], GL_STATIC_DRAW);
+	                                    &indices[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)0);

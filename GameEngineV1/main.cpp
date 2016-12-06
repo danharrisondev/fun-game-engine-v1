@@ -2,7 +2,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "Shader.h"
-#include "Vertex.h"
 #include "Mesh.h"
 
 int main(int argc, char** argv)
@@ -27,7 +26,7 @@ int main(int argc, char** argv)
 
 	Shader simplerShader("Shaders\\simple-movable.vs", "Shaders\\simple-movable.frag");
 
-	while(!glfwWindowShouldClose(window))
+	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
 
