@@ -27,9 +27,10 @@ int main(int argc, char** argv)
 
 	glEnable(GL_DEPTH_TEST);
 	glViewport(0, 0, 1024, 768);
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
-	Mesh triangleMesh(triangleVerts, sizeof(triangleVerts));
+	Mesh myLoadedTriangleMesh("Models\\Pyramid\\pyramid.obj");
+
 	Shader simplerShader("Shaders\\simple-movable.vs", "Shaders\\simple-movable.frag");
 
 	while(!glfwWindowShouldClose(window))
@@ -38,7 +39,7 @@ int main(int argc, char** argv)
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		triangleMesh.Draw(simplerShader);
+		myLoadedTriangleMesh.Draw(simplerShader);
 
 		glfwSwapBuffers(window);
 	}
